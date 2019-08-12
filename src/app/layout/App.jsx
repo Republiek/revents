@@ -1,7 +1,14 @@
 import React, { Component, Fragment } from "react";
-import EventDashboard from "../../features/event/EventDashboard/EventDashboard";
+import EventDashboard from "../../features/events/EventDashboard/EventDashboard";
 import NavBar from "../../features/nav/NavBar/NavBar";
 import { Container } from "semantic-ui-react";
+import { Route } from "react-router-dom";
+import Homepage from "../../features/home/HomePage";
+import EventDetailedPage from "../../features/events/EventDetailed/EventDetailedPage";
+import PeopleDashboard from "../../features/user/PeopleDashboard/PeopleDashboard";
+import SettingsDashboard from "../../features/user/Settings/SettingsDashboard";
+import UserDetailedPage from "../../features/user/UserDetailed/UserDetailedPage";
+import EventForm from "../../features/events/EventForm/EventForm";
 
 class App extends Component {
   render() {
@@ -9,7 +16,13 @@ class App extends Component {
       <Fragment>
         <NavBar />
         <Container className='main'>
-          <EventDashboard />
+          <Route exact path='/' component={Homepage} />
+          <Route path='/events' component={EventDashboard} />
+          <Route path='/events/:id' component={EventDetailedPage} />
+          <Route path='/people' component={PeopleDashboard} />
+          <Route path='/profile/:id' component={UserDetailedPage} />
+          <Route path='/settings' component={SettingsDashboard} />
+          <Route path='/createEvent' component={EventForm} />
         </Container>
       </Fragment>
     );
